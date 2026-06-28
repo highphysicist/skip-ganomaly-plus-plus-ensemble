@@ -15,12 +15,11 @@ def load_model(opt, dataloader):
     model_name = opt.model
     if model_name == 'skipganomaly':
 +        from lib.models.skipganomaly import Skipganomaly
-+        return Skipganomaly(opt, data)
++        return Skipganomaly(opt, dataloader)
 +    if model_name == 'skipganomaly_pp':
 +        from lib.models.skipganomaly_pp import SkipganomalyPP
-+        return SkipganomalyPP(opt, data)
++        return SkipganomalyPP(opt, dataloader)
 +    if model_name == 'ensemble':
 +        from lib.models.ensemble import SkipGanomalyEnsemble
-+        return SkipGanomalyEnsemble(opt, data)
++        return SkipGanomalyEnsemble(opt, dataloader)
 +    raise ValueError(f'Unknown model {model_name}')
-    return model(opt, dataloader)
